@@ -17,9 +17,12 @@ root.get("/", async (req, res) => {
     from employee
   `;
 
-  const resultSet = await db.query(sql);
+  const employees = await db.query(sql);
 
-  res.json(resultSet);
+  res.json({
+    length: employees.length,
+    employees
+  });
 });
 
 export default root;
