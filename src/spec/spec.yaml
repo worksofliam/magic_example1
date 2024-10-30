@@ -1,0 +1,344 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 983yyfcb7sadp
+info:
+  title: magic-api
+  version: '1.0'
+  contact:
+    name: Magic
+    url: magic
+    email: magic@magic.com
+  termsOfService: magic.com/tos
+  license:
+    name: MIT
+  description: Sample API
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /employees:
+    get:
+      summary: Get Employees
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - length
+                  - employees
+                properties:
+                  length:
+                    type: number
+                    x-stoplight:
+                      id: iofpg6eraixbg
+                  employees:
+                    type: array
+                    x-stoplight:
+                      id: qn970ot8quvhy
+                    items:
+                      $ref: '#/components/schemas/Employee'
+                      x-stoplight:
+                        id: ukbc99kkt1jhh
+      operationId: get-employees
+      x-stoplight:
+        id: 8ayu23gkdjyw0
+      description: Get employees
+    put:
+      summary: Create employee
+      tags: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - employee
+                properties:
+                  employee:
+                    $ref: '#/components/schemas/Employee'
+                    x-stoplight:
+                      id: ns5eonbtequp4
+      operationId: put-employees
+      x-stoplight:
+        id: bwogdl15obwup
+      description: Create new employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - employee
+              properties:
+                employee:
+                  $ref: '#/components/schemas/Employee'
+                  x-stoplight:
+                    id: fz23nbu1hy21h
+  '/employees/{id}':
+    parameters:
+      - schema:
+          type: string
+          minLength: 6
+          maxLength: 6
+        name: id
+        in: path
+        description: Employee id
+        required: true
+    get:
+      summary: Get employee by ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  employee:
+                    $ref: '#/components/schemas/Employee'
+                    x-stoplight:
+                      id: ati2tj4bd4dh8
+        '404':
+          description: Not Found
+      operationId: get-employees-id
+      x-stoplight:
+        id: 4x2ej4m737bni
+      parameters: []
+      description: Get employees
+    patch:
+      summary: Update employee
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - employee
+                properties:
+                  employee:
+                    $ref: '#/components/schemas/Employee'
+                    x-stoplight:
+                      id: gj1k4bg5pfrx1
+      operationId: patch-employees-id
+      x-stoplight:
+        id: 6iq21xo1d8e0r
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - employee
+              properties:
+                employee:
+                  $ref: '#/components/schemas/Employee'
+                  x-stoplight:
+                    id: jrn1yl3cmdfhw
+        description: Updates provided employee fields.
+  /departments:
+    get:
+      summary: Get departments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  length:
+                    type: number
+                    x-stoplight:
+                      id: 23qqnu1ejfnv2
+                  departments:
+                    type: array
+                    x-stoplight:
+                      id: 6k6rcg9cpu3zu
+                    items:
+                      $ref: '#/components/schemas/Department'
+                      x-stoplight:
+                        id: cc6qox6aehr5p
+      operationId: get-departments
+      x-stoplight:
+        id: kprc2pnfizdce
+      description: Returns all departments
+    put:
+      summary: Create department
+      tags: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - department
+                properties:
+                  department:
+                    $ref: '#/components/schemas/Department'
+                    x-stoplight:
+                      id: yfbh5tcbamjov
+      operationId: put-departments
+      x-stoplight:
+        id: 47xkjj584tucg
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - department
+              properties:
+                department:
+                  $ref: '#/components/schemas/Department'
+                  x-stoplight:
+                    id: 1gs94eaz69ews
+  '/departments/{id}':
+    parameters:
+      - schema:
+          type: string
+          minLength: 3
+          maxLength: 3
+        name: id
+        in: path
+        required: true
+        description: Department id
+    get:
+      summary: Get department by ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  department:
+                    $ref: '#/components/schemas/Department'
+                    x-stoplight:
+                      id: v0h2mn9j9x0he
+        '404':
+          description: Not Found
+      operationId: get-departments-id
+      x-stoplight:
+        id: kenzhe65b4wco
+      description: Get department by ID
+    patch:
+      summary: Update department
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - department
+                properties:
+                  department:
+                    $ref: '#/components/schemas/Department'
+                    x-stoplight:
+                      id: qwbi8g4xwd8nu
+      operationId: patch-departments-id
+      x-stoplight:
+        id: llfq8ymgbemm9
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - department
+              properties:
+                department:
+                  $ref: '#/components/schemas/Department'
+                  x-stoplight:
+                    id: 8np0bfqcmpzxh
+        description: Updates the provided fields for the department
+components:
+  schemas:
+    Employee:
+      title: Employee
+      x-stoplight:
+        id: kg5ta7wi5ofmz
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/EmployeeId'
+          x-stoplight:
+            id: xkzojgxrr42b4
+        first:
+          type: string
+          x-stoplight:
+            id: moxzpxygp405f
+          minLength: 1
+        last:
+          type: string
+          x-stoplight:
+            id: 0axal9bo6hydi
+          minLength: 1
+        job:
+          type: string
+          x-stoplight:
+            id: 9eukm04r4xd1c
+          minLength: 1
+        workdept:
+          $ref: '#/components/schemas/DeptId'
+          x-stoplight:
+            id: wbzpoaukkks6p
+        salary:
+          type: number
+          x-stoplight:
+            id: mw0kvnk2nx3m1
+          minimum: 1
+    EmployeeId:
+      title: EmployeeId
+      x-stoplight:
+        id: i58y3lrler5a4
+      type: string
+      minLength: 6
+      maxLength: 6
+      description: Employee ID length is 6
+    DeptId:
+      title: DeptId
+      x-stoplight:
+        id: kq6nlfqaxoof0
+      type: string
+      minLength: 3
+      maxLength: 3
+      description: Department ID length is 3
+    Department:
+      title: Department
+      x-stoplight:
+        id: gyiptyulksxys
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          $ref: '#/components/schemas/DeptId'
+          x-stoplight:
+            id: gwl32bjl2eona
+        name:
+          type: string
+          x-stoplight:
+            id: qu2vix8nm910w
+        location:
+          x-stoplight:
+            id: 1d5y60qrgs7no
+          type: string
+          description: Can be undefined if no location is set.
+        manager:
+          $ref: '#/components/schemas/EmployeeId'
+          x-stoplight:
+            id: g40wqixstpi5y
+          description: Can be null if no manager is set.
